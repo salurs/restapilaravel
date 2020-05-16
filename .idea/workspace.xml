@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc36e657-5190-4f34-8e2a-317bb1b03e23" name="Default Changelist" comment="" />
+    <list default="true" id="cc36e657-5190-4f34-8e2a-317bb1b03e23" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/restapilaravel.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +163,7 @@
       <workItem from="1589366778297" duration="862000" />
       <workItem from="1589405173486" duration="1272000" />
       <workItem from="1589626557397" duration="3890000" />
-      <workItem from="1589663881031" duration="343000" />
+      <workItem from="1589663881031" duration="1673000" />
     </task>
     <servers />
   </component>
