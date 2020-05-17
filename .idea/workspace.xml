@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc36e657-5190-4f34-8e2a-317bb1b03e23" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ProductCategoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ProductCategoryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +138,12 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/Models" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -160,7 +168,7 @@
       <workItem from="1589405173486" duration="1272000" />
       <workItem from="1589626557397" duration="3890000" />
       <workItem from="1589663881031" duration="4138000" />
-      <workItem from="1589718361767" duration="2603000" />
+      <workItem from="1589718361767" duration="3723000" />
     </task>
     <servers />
   </component>
