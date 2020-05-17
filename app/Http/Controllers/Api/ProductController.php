@@ -14,11 +14,38 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 //        return Product::all();
 //        return response(Product::all());
-        return response()->json(Product::all());
+//        return response()->json(Product::all());
+
+        $offset = 10;
+        if($request->has('offset')){
+            $request->validate([
+               'offset' => 'numeric|integer|min:1|max:20'
+            ]);
+            $offset = $request->offset;
+            $data['offset'] = $request->query('offset');
+        }
+        $query = Product::query();
+        if($request->has('q')) {
+            $query->where('name', 'like', '%' . $request->query('q') . '%');
+            $data['q'] = $request->query('q');
+        }
+        if($request->has('sortBy') || $request->has('sort')){
+            $request->validate([
+                'sortBy' => 'in:id,name,slug,price,description,created_at',
+                'sort' => 'in:asc,desc'
+            ]);
+            $query->orderBy($request->query('sortBy'),$request->query('sort','desc'));
+            $data['sortBy'] = $request->query('sortBy');
+            $data['sort'] = $request->query('sort','desc');
+        }
+
+        $data['result'] = $query->paginate($offset);
+
+        return response()->json($data,200);
     }
 
     /**
@@ -29,6 +56,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           'name'=>'required|string|max:255',
+           'price'=>'required|numeric|min:0'
+        ]);
         $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
@@ -87,6 +118,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'price'=>'required|numeric|min:0',
+            'description'=>'sometimes|required|min:3'
+        ]);
         $product = Product::find($id);
         $data = [
             'name' => $request->name,
