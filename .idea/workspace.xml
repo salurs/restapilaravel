@@ -114,6 +114,7 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1bQ8kqvtNKU2HU66QJupUgJICeb" />
@@ -159,6 +160,7 @@
       <workItem from="1589405173486" duration="1272000" />
       <workItem from="1589626557397" duration="3890000" />
       <workItem from="1589663881031" duration="4138000" />
+      <workItem from="1589718361767" duration="1713000" />
     </task>
     <servers />
   </component>
