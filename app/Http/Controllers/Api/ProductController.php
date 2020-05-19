@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\ProductIndexRequest;
+use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Str;
@@ -13,7 +16,7 @@ class ProductController extends ResponseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(ProductIndexRequest $request)
     {
 //        return Product::all();
 //        return response(Product::all());
@@ -21,9 +24,6 @@ class ProductController extends ResponseController
 
         $offset = 10;
         if ($request->has('offset')) {
-            $request->validate([
-                'offset' => 'numeric|integer|min:1|max:20'
-            ]);
             $offset = $request->offset;
             $data['offset'] = $request->query('offset');
         }
@@ -33,10 +33,6 @@ class ProductController extends ResponseController
             $data['q'] = $request->query('q');
         }
         if ($request->has('sortBy') || $request->has('sort')) {
-            $request->validate([
-                'sortBy' => 'in:id,name,slug,price,description,created_at',
-                'sort' => 'in:asc,desc'
-            ]);
             $query->orderBy($request->query('sortBy'), $request->query('sort', 'desc'));
             $data['sortBy'] = $request->query('sortBy');
             $data['sort'] = $request->query('sort', 'desc');
@@ -44,7 +40,7 @@ class ProductController extends ResponseController
 
         $data['result'] = $query->paginate($offset);
 
-        return $this->apiResponse($data, 'success', 200, 'Products list.');
+        return $this->apiResponse($data, 'success', 200, 'Products list fetched.');
     }
 
     /**
@@ -53,12 +49,8 @@ class ProductController extends ResponseController
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'price' => 'required|numeric|min:0'
-        ]);
         $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
@@ -95,16 +87,11 @@ class ProductController extends ResponseController
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, $id)
     {
         $product = Product::find($id);
         if ($product) {
             $data = $request->input();
-            $request->validate([
-                'name' => 'sometimes|required|string|max:255',
-                'price' => 'sometimes|required|numeric|min:0',
-                'description' => 'sometimes|required|min:3'
-            ]);
             if ($request->input('name'))
                 $data['slug'] = Str::slug($request->input('name'));
             if ($product->update($data)) {
