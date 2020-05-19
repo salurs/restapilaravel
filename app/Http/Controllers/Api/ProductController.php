@@ -6,6 +6,7 @@ use App\Http\Requests\ProductIndexRequest;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Models\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Str;
 
@@ -73,11 +74,10 @@ class ProductController extends ResponseController
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         if ($product) {
             return $this->apiResponse($product, 'success', 200, 'Product found');
         }
-        return $this->apiResponse(null, 'error', 404, 'Product not found');
     }
 
     /**
