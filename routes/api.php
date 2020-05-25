@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Api')->group(function (){
-    Route::apiResource('users','UserController');
+    Route::apiResource('users','UserController')->middleware('auth:api');
     Route::apiResource('products','ProductController');
     Route::apiResource('categories','CategoryController');
 });
