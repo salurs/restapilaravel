@@ -18,7 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::namespace('Api')->group(function (){
+    Route::post('/auth/login','AuthController@login');
+
     Route::apiResource('users','UserController')->middleware('auth:api');
     Route::apiResource('categories','CategoryController')->middleware('token.bearer');
     Route::apiResource('products','ProductController');
